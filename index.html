@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angelos‑Ioannis Katsampekis — Unity Game Developer & XR Research</title>
+  <meta name="description" content="Unity Game Developer & XR Research Engineer with Samsung & Coca‑Cola funded R&D. VR/AR, Multiplayer, ML, Physics Simulation, Mobile Optimization." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta property="og:title" content="Angelos‑Ioannis Katsampekis — Unity Game Developer & XR Research">
+  <meta property="og:description" content="Unity Game Developer & XR Research Engineer with Samsung & Coca‑Cola funded R&D." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <style>
+    :root { --ring: rgba(14,165,233,.35) }
+    html { scroll-behavior:smooth }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji" }
+    /* subtle glass */
+    .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
+    .dark .glass { background: rgba(2,6,23,.6) }
+  </style>
+  <script>
+    // simple dark mode toggle based on system
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    document.documentElement.classList.toggle('dark', mq.matches);
+    mq.addEventListener('change', (e)=>document.documentElement.classList.toggle('dark', e.matches));
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Angelos‑Ioannis Katsampekis",
+    "jobTitle": "Unity Game Developer & XR Research Engineer",
+    "email": "mailto:angeloskatsampekis@gmail.com",
+    "telephone": "+306984392304",
+    "url": "https://your-domain.example/",
+    "sameAs": [
+      "https://linkedin.com/in/angelos-ioannis-katsampekis"
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 glass border-b border-slate-900/10 dark:border-white/10">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#top" class="font-extrabold tracking-tight text-slate-900 dark:text-white">AK</a>
+        <nav class="hidden md:flex gap-6 text-sm text-slate-600 dark:text-slate-300">
+          <a class="hover:text-slate-900 dark:hover:text-white" href="#projects">Projects</a>
+          <a class="hover:text-slate-900 dark:hover:text-white" href="#experience">Experience</a>
+          <a class="hover:text-slate-900 dark:hover:text-white" href="#skills">Skills</a>
+          <a class="hover:text-slate-900 dark:hover:text-white" href="#education">Education</a>
+          <a class="hover:text-slate-900 dark:hover:text-white" href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-sky-600 focus:outline-none focus:ring-4" style="--tw-ring-color:var(--ring)">Hire me</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-100 via-sky-50 to-transparent dark:from-sky-900/40 dark:via-transparent"></div>
+    <div class="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div>
+          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">Angelos‑Ioannis Katsampekis</h1>
+          <p class="mt-3 text-lg md:text-xl text-slate-600 dark:text-slate-300">Unity Game Developer & XR Research Engineer</p>
+          <p class="mt-4 text-slate-700 dark:text-slate-300 max-w-prose">I build high‑performance VR/AR experiences, multiplayer systems, and physics‑driven simulations. My work spans Samsung & Coca‑Cola funded R&D, mobile AI deployment, and generative‑AI powered gameplay.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#projects" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-semibold hover:bg-white/70 dark:hover:bg-slate-900/30">View projects</a>
+            <a href="assets/Angelos-Ioannis-Katsampekis-CV.pdf" class="rounded-xl px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90" download>Download CV</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow">
+            <img src="https://images.unsplash.com/photo-1607853554439-0069ec0f29f3?q=80&w=1600&auto=format&fit=crop" alt="Unity & XR montage" class="h-full w-full object-cover"/>
+          </div>
+          <p class="mt-2 text-xs text-slate-500">(Replace hero image with a collage or screenshot from your projects.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlight badges -->
+  <section class="mx-auto max-w-6xl px-4 -mt-6 md:-mt-10 pb-4">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div class="rounded-2xl bg-white dark:bg-slate-900 shadow border border-slate-200 dark:border-slate-800 p-4">
+        <p class="text-sm font-semibold">XR & Games</p>
+        <p class="text-xs text-slate-500">VR/AR (Meta Quest, OpenXR), Multiplayer, Physics Simulation</p>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 shadow border border-slate-200 dark:border-slate-800 p-4">
+        <p class="text-sm font-semibold">AI in Production</p>
+        <p class="text-xs text-slate-500">ONNX, NNAPI, TFLite, Sentis; ML‑Agents; Generative‑AI pipelines</p>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 shadow border border-slate-200 dark:border-slate-800 p-4">
+        <p class="text-sm font-semibold">Mobile Optimization</p>
+        <p class="text-xs text-slate-500">GLES/Vulkan, Android NDK, in‑app benchmarking & telemetry</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="mx-auto max-w-6xl px-4 py-14 md:py-20">
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="text-2xl md:text-3xl font-bold">Selected Projects</h2>
+      <a href="#contact" class="text-sm text-sky-600 dark:text-sky-400 hover:underline">Open to contracts & full‑time</a>
+    </div>
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card template -->
+      <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
+        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1527443224154-c4f2a75621f0?q=80&w=1400&auto=format&fit=crop" alt="Samsung Avatar Tracking"/>
+        <div class="p-5">
+          <h3 class="font-semibold">Samsung — Avatar Body Capture (Unity)</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Mobile‑ready full‑body motion prediction in VR. Integrated multiple inference back‑ends, plus an in‑app benchmarking harness.</p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>ONNX</span><span>Sentis</span><span>TFLite</span></div>
+          <div class="mt-4 flex gap-3">
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Demo</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
+        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1517170657006-69f4b59e518e?q=80&w=1400&auto=format&fit=crop" alt="Drone & Missile Simulator"/>
+        <div class="p-5">
+          <h3 class="font-semibold">Drone & Missile Simulator (Unity)</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Custom real‑time multithreaded aerodynamic solver (per‑vertex forces), autonomous drones via ML‑Agents, telemetry for AI research.</p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>ML‑Agents</span><span>C#</span></div>
+          <div class="mt-4 flex gap-3">
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Video</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
+        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1614712929867-3a1d4d43eedf?q=80&w=1400&auto=format&fit=crop" alt="AI‑Driven VR Museum"/>
+        <div class="p-5">
+          <h3 class="font-semibold">ReEvaluate — AI‑Driven VR Museum (EU Horizon)</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Generative‑AI creates themed textures and auto‑places artifacts based on semantic descriptions in an immersive museum.</p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Generative‑AI</span><span>XR</span></div>
+          <div class="mt-4 flex gap-3">
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Trailer</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
+        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1400&auto=format&fit=crop" alt="3D Geospatial Platform"/>
+        <div class="p-5">
+          <h3 class="font-semibold">Palimpsisto — 3D Geospatial Platform</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Interactive Cesium‑powered viewer streaming photogrammetry as 3D Tiles with live museum metadata & AI assistant.</p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Cesium</span><span>3D Tiles</span></div>
+          <div class="mt-4 flex gap-3">
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Demo</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
+        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1549921296-3cc26d9db30f?q=80&w=1400&auto=format&fit=crop" alt="5G VR Tour"/>
+        <div class="p-5">
+          <h3 class="font-semibold">5G VR Automotive Tour — Multiplayer</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">VR multiplayer app receiving 360° video over 5G, with real‑time face anonymization and networking telemetry.</p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Multiplayer</span><span>Computer Vision</span></div>
+          <div class="mt-4 flex gap-3">
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Video</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
+        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1400&auto=format&fit=crop" alt="Samsung Game Optimization"/>
+        <div class="p-5">
+          <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Python/C++ tooling to convert/package DL models for mobile AI runtimes (NNAPI/TFLite). Custom graphics harness for frame‑time/thermal/battery telemetry.</p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Python</span><span>C++</span><span>NNAPI</span><span>Android</span></div>
+          <div class="mt-4 flex gap-3">
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Docs</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Repo</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="mx-auto max-w-6xl px-4 py-14 md:py-20 border-t border-slate-200 dark:border-slate-800">
+    <h2 class="text-2xl md:text-3xl font-bold">Experience</h2>
+    <div class="mt-8 space-y-6">
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 class="font-semibold">Research Assistant — CERTH (Thessaloniki)</h3>
+          <p class="text-sm text-slate-500">2022–2025</p>
+        </div>
+        <ul class="mt-3 list-disc pl-5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          <li>Delivered Samsung & Coca‑Cola funded R&D across VR, AI, and optimization.</li>
+          <li>Built a mobile‑ready VR full‑body tracking pipeline; integrated ONNX, Sentis, TFLite; added an in‑app benchmarking framework.</li>
+          <li>Engineered a multithreaded aerodynamic solver for a drone & missile simulator; trained agents with ML‑Agents; captured telemetry.</li>
+          <li>Shipped the Palimpsisto 3D geospatial platform (Cesium 3D Tiles) with AI assistant & live museum metadata.</li>
+          <li>Developed a VR multiplayer app receiving 360° video over 5G with face anonymization & telemetry.</li>
+          <li>Contributed to EU Horizon projects (VirTourArt, ReEvaluate) in AR/VR rendering, multimodal interaction & generative AI.</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 class="font-semibold">Software Developer — Pragma IoT Solutions (Thessaloniki)</h3>
+          <p class="text-sm text-slate-500">2024–2025</p>
+        </div>
+        <ul class="mt-3 list-disc pl-5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          <li>Created Python/C++ tools to convert and package models for NNAPI/TFLite and Android deployment.</li>
+          <li>Benchmarked mobile games with a custom graphics harness (frame‑time, thermal, battery) to guide optimization with Samsung’s team.</li>
+          <li>Built Python dashboarding for NB‑IoT sensors (EMBNOESIS) to monitor construction sites in real‑time.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="mx-auto max-w-6xl px-4 py-14 md:py-20">
+    <h2 class="text-2xl md:text-3xl font-bold">Skills</h2>
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="font-semibold">Core</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Unity 3D / C# (HDRP, URP, XR Interaction), Multiplayer (Netcode), Multithreaded gameplay systems</p>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="font-semibold">XR & Devices</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">VR/AR (Meta Quest, Valve Index, OpenXR, Meta XR SDKs)</p>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="font-semibold">AI/ML</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">ML‑Agents, Generative‑AI pipelines, ONNX, NNAPI, TensorFlow Lite, Sentis</p>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="font-semibold">Graphics & Mobile</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">GLES, Vulkan, Android NDK; optimization & telemetry</p>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="font-semibold">Data & Tools</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">C++, Python, Git, CI/CD; Data visualization</p>
+      </div>
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <h3 class="font-semibold">Geospatial</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Cesium 3D Tiles, Photogrammetry streaming</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="mx-auto max-w-6xl px-4 py-14 md:py-20 border-t border-slate-200 dark:border-slate-800">
+    <h2 class="text-2xl md:text-3xl font-bold">Education</h2>
+    <ul class="mt-6 space-y-4 text-sm text-slate-700 dark:text-slate-300">
+      <li class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <div class="flex items-baseline justify-between"><strong>Advanced Computer & Communication Systems (MSc)</strong><span>2021–2025</span></div>
+        <div>Aristotle University of Thessaloniki</div>
+      </li>
+      <li class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <div class="flex items-baseline justify-between"><strong>Physics (BSc)</strong><span>2012–2020</span></div>
+        <div>Aristotle University of Thessaloniki</div>
+      </li>
+      <li class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+        <div class="flex items-baseline justify-between"><strong>Data Science with Python (Certificate)</strong><span>2020–2021</span></div>
+        <div>National & Kapodistrian University of Athens</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-6xl px-4 py-14 md:py-20">
+    <div class="rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 text-white p-8 md:p-10 shadow">
+      <h2 class="text-2xl md:text-3xl font-bold">Let’s build something.</h2>
+      <p class="mt-2 text-sky-50/90 max-w-prose">I’m based in Thessaloniki, Greece, open to remote roles in game development and XR research. I move fast, iterate with pilots, and deliver production‑ready code.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="mailto:angeloskatsampekis@gmail.com" class="rounded-xl bg-white text-sky-700 px-4 py-2 font-semibold hover:opacity-90">Email</a>
+        <button id="copyEmail" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20">Copy email</button>
+        <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="assets/Angelos-Ioannis-Katsampekis-CV.pdf" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" download>Download CV</a>
+      </div>
+      <p class="mt-3 text-xs text-sky-50/80">Tel. +30 698 439 2304 • Greece (UTC+3)</p>
+    </div>
+  </section>
+
+  <footer class="mx-auto max-w-6xl px-4 py-10 text-xs text-slate-500">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 dark:border-slate-800 pt-6">
+      <p>© <span id="year"></span> Angelos‑Ioannis Katsampekis. All rights reserved.</p>
+      <a href="#top" class="hover:underline">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('angeloskatsampekis@gmail.com');
+        const btn = document.getElementById('copyEmail');
+        const prev = btn.textContent; btn.textContent = 'Copied!';
+        setTimeout(()=>btn.textContent = prev, 1200);
+      } catch {}
+    });
+  </script>
+</body>
+</html>
