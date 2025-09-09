@@ -17,12 +17,10 @@
     :root { --ring: rgba(14,165,233,.35) }
     html { scroll-behavior:smooth }
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji" }
-    /* subtle glass */
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
   </style>
   <script>
-    // simple dark mode toggle based on system
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     document.documentElement.classList.toggle('dark', mq.matches);
     mq.addEventListener('change', (e)=>document.documentElement.classList.toggle('dark', e.matches));
@@ -76,7 +74,7 @@
         </div>
         <div class="relative">
           <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow">
-            <img src="https://images.unsplash.com/photo-1607853554439-0069ec0f29f3?q=80&w=1600&auto=format&fit=crop" alt="Unity & XR montage" class="h-full w-full object-cover"/>
+            <img src="https://images.unsplash.com/photo-1607853554439-0069ec0f29f3?q=80&w=1600&auto=format&fit=crop" alt="Unity & XR montage" class="h-full w-full object-cover" loading="lazy"/>
           </div>
           <p class="mt-2 text-xs text-slate-500">(Replace hero image with a collage or screenshot from your projects.)</p>
         </div>
@@ -109,79 +107,85 @@
       <a href="#contact" class="text-sm text-sky-600 dark:text-sky-400 hover:underline">Open to contracts & full‑time</a>
     </div>
     <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Card template -->
+      <!-- 1. Avatar Body Capture -->
       <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1527443224154-c4f2a75621f0?q=80&w=1400&auto=format&fit=crop" alt="Samsung Avatar Tracking"/>
+        <img class="h-40 w-full object-cover" src="assets/images/avatar-body-capture.webp" alt="Samsung — Avatar Body Capture cover" loading="lazy"/>
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Avatar Body Capture (Unity)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Mobile‑ready full‑body motion prediction in VR. Integrated multiple inference back‑ends, plus an in‑app benchmarking harness.</p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>ONNX</span><span>Sentis</span><span>TFLite</span></div>
           <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Demo</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-video="assets/videos/avatar-body-capture.mp4">Demo</a>
             <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
           </div>
         </div>
       </article>
 
+      <!-- 2. Drone & Missile Simulator -->
       <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1517170657006-69f4b59e518e?q=80&w=1400&auto=format&fit=crop" alt="Drone & Missile Simulator"/>
+        <img class="h-52 w-full object-cover" src="assets/images/drone-missile-sim.webp" alt="Drone & Missile Simulator cover" loading="lazy"/>
         <div class="p-5">
           <h3 class="font-semibold">Drone & Missile Simulator (Unity)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Custom real‑time multithreaded aerodynamic solver (per‑vertex forces), autonomous drones via ML‑Agents, telemetry for AI research.</p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>ML‑Agents</span><span>C#</span></div>
           <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Video</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-yt="SAqYrQm3fzI">Video</a>
             <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
           </div>
         </div>
       </article>
 
+      <!-- 3. ReEvaluate — AI‑Driven VR Museum -->
       <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1614712929867-3a1d4d43eedf?q=80&w=1400&auto=format&fit=crop" alt="AI‑Driven VR Museum"/>
+        <img class="h-50 w-full object-cover" src="assets/images/vr-museum.webp" alt="AI‑Driven VR Museum cover" loading="lazy"/>
         <div class="p-5">
           <h3 class="font-semibold">ReEvaluate — AI‑Driven VR Museum (EU Horizon)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Generative‑AI creates themed textures and auto‑places artifacts based on semantic descriptions in an immersive museum.</p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Generative‑AI</span><span>XR</span></div>
           <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Trailer</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-yt="reevaluatedemo">Trailer</a>
             <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
           </div>
         </div>
       </article>
 
+      <!-- 4. Palimpsisto — 3D Geospatial Platform -->
       <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1400&auto=format&fit=crop" alt="3D Geospatial Platform"/>
+        <img class="h-50 w-full object-cover" src="assets/images/palimpsisto.webp" alt="Palimpsisto — 3D Geospatial Platform cover" loading="lazy"/>
         <div class="p-5">
           <h3 class="font-semibold">Palimpsisto — 3D Geospatial Platform</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Interactive Cesium‑powered viewer streaming photogrammetry as 3D Tiles with live museum metadata & AI assistant.</p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Cesium</span><span>3D Tiles</span></div>
           <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Demo</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-yt="KmM3BtNyX_s">Demo</a>
             <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
           </div>
         </div>
       </article>
 
+      <!-- 5. 5G VR Automotive Tour — Multiplayer -->
       <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1549921296-3cc26d9db30f?q=80&w=1400&auto=format&fit=crop" alt="5G VR Tour"/>
+        <img class="h-40 w-full object-cover" src="assets/images/vr-5g-tour.webp" alt="5G VR Automotive Tour cover" loading="lazy"/>
         <div class="p-5">
           <h3 class="font-semibold">5G VR Automotive Tour — Multiplayer</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">VR multiplayer app receiving 360° video over 5G, with real‑time face anonymization and networking telemetry.</p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Multiplayer</span><span>Computer Vision</span></div>
           <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Video</a>
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-video="assets/videos/vr-5g-tour.mp4">Video</a>
             <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Write‑up</a>
           </div>
         </div>
       </article>
 
+      <!-- 6. Samsung — Game Optimization Toolkit -->
       <article class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <img class="h-40 w-full object-cover" src="https://images.unsplash.com/photo-1488229297570-58520851e868?q=80&w=1400&auto=format&fit=crop" alt="Samsung Game Optimization"/>
+        <img class="h-40 w-full object-cover" src="assets/images/game-opt-toolkit.webp" alt="Samsung — Game Optimization Toolkit cover" loading="lazy"/>
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Python/C++ tooling to convert/package DL models for mobile AI runtimes (NNAPI/TFLite). Custom graphics harness for frame‑time/thermal/battery telemetry.</p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Python</span><span>C++</span><span>NNAPI</span><span>Android</span></div>
           <div class="mt-4 flex gap-3">
+            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-video="assets/videos/game-opt-toolkit.mp4">Demo</a>
             <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Docs</a>
             <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" aria-disabled>Repo</a>
           </div>
@@ -294,6 +298,15 @@
     </div>
   </footer>
 
+  <!-- Video Modal (supports MP4 or YouTube) -->
+  <div id="videoModal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/70 p-4">
+    <div class="relative w-full max-w-4xl">
+      <button id="videoClose" class="absolute -top-3 -right-3 rounded-full bg-white text-slate-800 w-9 h-9 shadow hover:opacity-90" aria-label="Close">✕</button>
+      <div id="videoContainer" class="aspect-video w-full bg-black rounded-xl overflow-hidden"></div>
+      <p class="mt-2 text-xs text-slate-300 text-center">Tip: press Esc to close.</p>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('copyEmail').addEventListener('click', async () => {
@@ -304,6 +317,41 @@
         setTimeout(()=>btn.textContent = prev, 1200);
       } catch {}
     });
+
+    // Simple video modal that handles MP4 or YouTube embeds
+    (function(){
+      const modal = document.getElementById('videoModal');
+      const container = document.getElementById('videoContainer');
+      const closeBtn = document.getElementById('videoClose');
+
+      function openModal(html){
+        container.innerHTML = html;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal(){
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        container.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('a[data-video], a[data-yt]');
+        if(!a) return;
+        e.preventDefault();
+        if(a.dataset.video){
+          openModal(`<video src="${a.dataset.video}" controls autoplay playsinline class="w-full h-full"></video>`);
+        } else if (a.dataset.yt){
+          openModal(`<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`);
+        }
+      });
+
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+      closeBtn.addEventListener('click', closeModal);
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+    })();
   </script>
 </body>
 </html>
