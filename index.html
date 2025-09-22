@@ -17,9 +17,17 @@
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
 
-    /* video frame ratio + rounding */
-    .video-frame { position: relative; width:100%; aspect-ratio:16/9; border-radius:1rem; overflow:hidden; }
+    /* Unified media frames (video + image) */
+    .video-frame, .image-frame {
+      position: relative; width:100%; aspect-ratio:16/9;
+      border-radius:1rem; overflow:hidden;
+    }
     .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .image-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+    /* Gentle hover polish (applies to media container) */
+    .media-hover { transition: transform .5s ease, filter .5s ease }
+    .media-hover:hover { transform: scale(1.01); filter: brightness(1.02) contrast(1.02) }
   </style>
   <script>
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -97,9 +105,9 @@
 
     <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-12 gap-6">
 
-      <!-- Featured (wide) -->
+      <!-- Featured (YouTube) -->
       <article class="order-first sm:order-none lg:col-span-8 lg:col-start-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
-        <div class="video-frame">
+        <div class="video-frame media-hover">
           <iframe
             src="https://www.youtube-nocookie.com/embed/SAqYrQm3fzI"
             title="Drone & Missile Simulator (Unity)"
@@ -119,9 +127,9 @@
         </div>
       </article>
 
-      <!-- Standard card -->
+      <!-- YouTube card -->
       <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
-        <div class="video-frame">
+        <div class="video-frame media-hover">
           <iframe
             src="https://www.youtube-nocookie.com/embed/KmM3BtNyX_s"
             title="Palimpsisto — 3D Geospatial Platform (Unity)"
@@ -141,8 +149,9 @@
         </div>
       </article>
 
+      <!-- YouTube card -->
       <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
-        <div class="video-frame">
+        <div class="video-frame media-hover">
           <iframe
             src="https://www.youtube-nocookie.com/embed/v9MegKCSuzA"
             title="Samsung — Avatar Body Capture (Unity)"
@@ -162,8 +171,9 @@
         </div>
       </article>
 
+      <!-- YouTube card -->
       <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
-        <div class="video-frame">
+        <div class="video-frame media-hover">
           <iframe
             src="https://www.youtube-nocookie.com/embed/6NSG7SIRdUY"
             title="ReEvaluate — AI-Driven VR Museum (EU Horizon)"
@@ -183,7 +193,37 @@
         </div>
       </article>
 
-      <!-- Duplicate the pattern above for more projects... -->
+      <!-- Image-only card (no video) -->
+      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+        <div class="image-frame media-hover">
+          <img src="assets/images/vr-5g-tour.webp" alt="5G VR Automotive Tour — Multiplayer cover" loading="lazy">
+        </div>
+        <div class="p-5">
+          <h3 class="font-semibold">5G VR Automotive Tour — Multiplayer</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            VR multiplayer app receiving live 360° video over 5G with real-time face anonymization and network telemetry.
+          </p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500">
+            <span>Unity</span><span>Multiplayer</span><span>Computer Vision</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Image-only card (no video) -->
+      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+        <div class="image-frame media-hover">
+          <img src="assets/images/game-opt-toolkit.webp" alt="Samsung — Game Optimization Toolkit cover" loading="lazy">
+        </div>
+        <div class="p-5">
+          <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Python/C++ tooling to convert/package DL models for mobile AI runtimes (NNAPI/TFLite). Graphics harness for frame-time, thermal, and battery telemetry.
+          </p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500">
+            <span>Python</span><span>C++</span><span>NNAPI</span><span>Android</span>
+          </div>
+        </div>
+      </article>
 
     </div>
   </section>
@@ -194,15 +234,15 @@
     <div class="mt-8 space-y-6">
       <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 class="font-semibold">Research Assistant — CERTH (Thessaloniki)</h3>
+          <h3 class="font-semibold">Research Assistant — Unity Developer — CERTH (Thessaloniki)</h3>
           <p class="text-sm text-slate-500">2022–2025</p>
         </div>
         <ul class="mt-3 list-disc pl-5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          <li>Developed a full Drone & Missile simulator; engineered a multithreaded aerodynamic solver; trained autonomous drones with ML-Agents; captured telemetry.</li>
           <li>Delivered Samsung & Coca-Cola funded R&D across VR, AI, and optimization.</li>
-          <li>Built a mobile-ready VR full-body tracking pipeline; integrated ONNX, Sentis, TFLite; added an in-app benchmarking framework.</li>
-          <li>Engineered a multithreaded aerodynamic solver for a drone & missile simulator; trained agents with ML-Agents; captured telemetry.</li>
+          <li>Built a mobile-ready VR full-body tracking pipeline; integrated ONNXRuntime, Sentis, TFLite; added an in-app benchmarking framework.</li>
           <li>Shipped the Palimpsisto 3D geospatial platform (Cesium 3D Tiles) with AI assistant & live museum metadata.</li>
-          <li>Developed a VR multiplayer app receiving 360° video over 5G with face anonymization & telemetry.</li>
+          <li>Developed a VR multiplayer app receiving 360° video over 5G with face anonymization & network telemetry.</li>
           <li>Contributed to EU Horizon projects (VirTourArt, ReEvaluate) in AR/VR rendering, multimodal interaction & generative AI.</li>
         </ul>
       </div>
@@ -212,7 +252,7 @@
           <p class="text-sm text-slate-500">2024–2025</p>
         </div>
         <ul class="mt-3 list-disc pl-5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-          <li>Created Python/C++ tools to convert and package models for NNAPI/TFLite and Android deployment.</li>
+          <li>Created Python/C++ tools to convert ONNX models to ANN for Android deployment.</li>
           <li>Benchmarked mobile games with a custom graphics harness (frame-time, thermal, battery) to guide optimization with Samsung’s team.</li>
           <li>Built Python dashboarding for NB-IoT sensors (EMBNOESIS) to monitor construction sites in real-time.</li>
         </ul>
