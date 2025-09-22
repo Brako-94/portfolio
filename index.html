@@ -31,7 +31,7 @@
     }
     .dark .bg-scene img{
       filter: blur(40px) saturate(1.15) brightness(.6);
-      opacity:.928; /* keep it high per your preference */
+      opacity:.928;
     }
     .bg-scene::after{
       content:""; position:absolute; inset:-15%;
@@ -99,7 +99,7 @@
             I build VR/AR applications, physics-based simulations, gameplay systems, and multiplayer experiences. My work centers on game development and XR research, with additional expertise in machine learning, generative AI, mobile optimization, and collaborations with Samsung and Coca-Cola.
           </p>
 
-          <!-- CTAs (no arrow icon) -->
+          <!-- CTAs -->
           <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center">
             <a href="#projects"
                class="w-full sm:w-auto inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow hover:brightness-110 focus:outline-none focus:ring-4 ring-offset-0"
@@ -122,11 +122,11 @@
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
           <p class="text-sm font-semibold">XR & Games</p>
-          <p class="text-xs text-slate-500">VR/AR (Meta Quest, OpenXR), multiplayer, physics simulation</p>
+          <p class="text-xs text-slate-500">VR/AR, multiplayer, physics simulation, gameplay systems</p>
         </div>
         <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
           <p class="text-sm font-semibold">AI in Production</p>
-          <p class="text-xs text-slate-500">Sentis, ONNX Runtime, TensorFlow Lite, NNAPI, ML-Agents, generative-AI pipelines</p>
+          <p class="text-xs text-slate-500">Sentis, ONNX Runtime, TensorFlow Lite, NNAPI, ML-Agents, generative-AI pipelines, machine learning</p>
         </div>
         <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
           <p class="text-sm font-semibold">Mobile Optimization</p>
@@ -160,8 +160,11 @@
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Complete simulator with a custom multithreaded aerodynamic solver (per-vertex forces), autonomous drones trained with ML-Agents, and research-grade telemetry.
             </p>
-            <div class="mt-3 flex gap-2 text-xs text-slate-500">
-              <span>Unity</span><span>Physics Simulation</span><span>ML-Agents</span><span>C#</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Unity</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Physics&nbsp;Simulation</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">ML-Agents</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">C#</span>
             </div>
           </div>
         </article>
@@ -182,8 +185,12 @@
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Mobile-ready full-body motion prediction in VR with multiple inference back ends and an in-app benchmarking harness.
             </p>
-            <div class="mt-3 flex gap-2 text-xs text-slate-500">
-              <span>Unity</span><span>ONNX Runtime</span><span>Sentis</span><span>TensorFlow Lite</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Unity</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Sentis</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">ONNX&nbsp;Runtime</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">TensorFlow&nbsp;Lite</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Deep-Learning</span>
             </div>
           </div>
         </article>
@@ -204,8 +211,11 @@
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Interactive Cesium-powered viewer streaming photogrammetry as 3D Tiles with live museum metadata and an AI assistant, developed for the archaeological site of Kythnos.
             </p>
-            <div class="mt-3 flex gap-2 text-xs text-slate-500">
-              <span>Unity</span><span>Cesium</span><span>3D Tiles</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Unity</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Cesium</span>              
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">3D&nbsp;Tiles</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">AI&nbsp;Chatbot</span>
             </div>
           </div>
         </article>
@@ -226,8 +236,10 @@
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Generative AI creates themed textures and auto-places artifacts based on semantic descriptions inside an immersive museum.
             </p>
-            <div class="mt-3 flex gap-2 text-xs text-slate-500">
-              <span>Unity</span><span>Generative AI</span><span>XR</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Unity</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Generative&nbsp;AI</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">XR</span>
             </div>
           </div>
         </article>
@@ -243,8 +255,11 @@
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
               VR multiplayer application receiving live 360° video over 5G with real-time face anonymization and detailed network telemetry.
             </p>
-            <div class="mt-3 flex gap-2 text-xs text-slate-500">
-              <span>Unity</span><span>Multiplayer</span><span>5G</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Unity</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">XR</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Multiplayer</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">5G</span>
             </div>
           </div>
         </article>
@@ -258,10 +273,15 @@
           <div class="p-5">
             <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-              Python/C++ tooling to convert ONNX models to ANN for mobile AI runtimes plus a graphics harness for frame-time, thermal, and battery telemetry.
+              Python/C++ tooling to convert ONNX models to ANN for mobile AI runtimes, custom GLES/Vulkan layer plus a graphics harness for GPU calls, frame-time, thermal, and battery telemetry.
             </p>
-            <div class="mt-3 flex gap-2 text-xs text-slate-500">
-              <span>Python</span><span>C++</span><span>NNAPI</span><span>Android</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Python</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">C++</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Onnx</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">NNAPI</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">Android</span>
+              <span class="inline-flex items-center rounded-full border border-slate-200/60 dark:border-slate-700/60 bg-slate-50/60 dark:bg-slate-800/60 px-2.5 py-1 text-slate-600 dark:text-slate-300 whitespace-nowrap">GLES/Vulkan</span>
             </div>
           </div>
         </article>
@@ -294,7 +314,7 @@
           </div>
           <ul class="mt-3 list-disc pl-5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
             <li>Created Python/C++ tools to convert and package ONNX models to ANN for Android deployment.</li>
-            <li>Benchmarked mobile games with a custom graphics harness (frame time, thermals, battery) to guide optimization with Samsung’s team.</li>
+            <li>Benchmarked mobile games with a custom graphics harness (GPU calls, frame time, thermals, battery) to guide optimization with Samsung’s team.</li>
             <li>Built Python dashboards for NB-IoT sensors (EMBNOESIS) to monitor construction sites in real time.</li>
           </ul>
         </div>
@@ -330,6 +350,25 @@
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Cesium 3D Tiles, photogrammetry streaming</p>
         </div>
       </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="mx-auto max-w-6xl px-4 py-14 md:py-20 border-t border-slate-200 dark:border-slate-800">
+      <h2 class="text-2xl md:text-3xl font-bold">Education</h2>
+      <ul class="mt-6 space-y-4 text-sm text-slate-700 dark:text-slate-300">
+        <li class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
+          <div class="flex items-baseline justify-between"><strong>Physics (BSc)</strong></div>
+          <div>Aristotle University of Thessaloniki</div>
+        </li>
+        <li class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
+          <div class="flex items-baseline justify-between"><strong>Advanced Computer & Communication Systems (MSc)</strong></div>
+          <div>Aristotle University of Thessaloniki</div>
+        </li>
+        <li class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
+          <div class="flex items-baseline justify-between"><strong>Data Science with Python (Certificate)</strong></div>
+          <div>National & Kapodistrian University of Athens</div>
+        </li>
+      </ul>
     </section>
 
     <!-- Contact -->
