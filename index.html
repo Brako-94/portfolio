@@ -11,30 +11,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="theme-color" content="#0ea5e9" />
 
-  <!-- Preload background (WebP first, JPG fallback lives in CSS + <noscript>) -->
-  <link rel="preload" as="image" href="assets/images/bg-portfolio.webp" imagesrcset="assets/images/bg-portfolio.webp 1x, assets/images/bg-portfolio.webp 2x" />
-  <link rel="preload" as="image" href="assets/images/bg-portfolio.jpg" />
-
   <style>
-    :root { --ring: rgba(14,165,233,.35) }
+    :root {
+      --ring: rgba(14,165,233,.35);
+      /* background image URL is set at runtime to webp or jpg */
+      --bg-url: url('assets/images/bg-portfolio.webp');
+    }
     html { scroll-behavior:smooth }
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji" }
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
 
-    /* ---------- Background (image with WebP/JPG fallback + static aurora) ---------- */
+    /* ---------- Background (runtime webp/jpg fallback) ---------- */
     .bg-scene {
       position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
     }
     .bg-scene::before {
       content: "";
       position: absolute; inset: -20%;
-      background:
-        /* blurred image base (image-set gives webp->jpg fallback on GH Pages) */
-        image-set(
-          url('assets/images/bg-portfolio.webp') type('image/webp'),
-          url('assets/images/bg-portfolio.jpg') type('image/jpeg')
-        ) center/cover no-repeat;
+      background: var(--bg-url) center / cover no-repeat;
       filter: blur(36px) saturate(1.05) brightness(.92);
       transform: scale(1.08);
       opacity: .32;
@@ -55,33 +50,36 @@
     }
 
     /* ---------- Media cards ---------- */
-    .video-frame, .image-frame {
-      position: relative; width:100%; aspect-ratio:16/9;
-      border-radius:1rem; overflow:hidden;
-    }
-    .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-    .image-frame picture, .image-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .video-frame, .image-frame { position: relative; width:100%; aspect-ratio:16/9; border-radius:1rem; overflow:hidden }
+    .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0 }
+    .image-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
-    /* Gentle hover polish */
+    /* Hover polish */
     .media-hover { transition: transform .5s ease, filter .5s ease }
     .media-hover:hover { transform: scale(1.01); filter: brightness(1.02) contrast(1.02) }
   </style>
 
   <script>
+    // Dark mode sync
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     document.documentElement.classList.toggle('dark', mq.matches);
     mq.addEventListener('change', (e)=>document.documentElement.classList.toggle('dark', e.matches));
+
+    // Background image WebP -> JPG fallback (handles GitHub Pages 404s / case issues)
+    (function () {
+      const webp = 'assets/images/bg-portfolio.webp';
+      const jpg  = 'assets/images/bg-portfolio.jpg';
+      const test = new Image();
+      test.onload  = () => document.documentElement.style.setProperty('--bg-url', `url('${webp}')`);
+      test.onerror = () => document.documentElement.style.setProperty('--bg-url', `url('${jpg}')`);
+      // cache-bust so a previous 404 doesn't stick
+      test.src = webp + '?v=' + Date.now();
+    })();
   </script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
   <!-- Background -->
   <div class="bg-scene" aria-hidden="true"></div>
-  <noscript>
-    <style>
-      /* JS-less fallback to JPG if needed */
-      .bg-scene::before { background: url('assets/images/bg-portfolio.jpg') center/cover no-repeat !important; }
-    </style>
-  </noscript>
 
   <!-- Navbar -->
   <header class="sticky top-0 z-40 glass border-b border-slate-900/10 dark:border-white/10">
@@ -233,13 +231,14 @@
         </div>
       </article>
 
-      <!-- Image-only card (no video) with WebP/JPG fallback -->
+      <!-- Image-only card (no video) — WebP with auto JPG fallback -->
       <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="image-frame media-hover">
-          <picture>
-            <source srcset="assets/images/vr-5g-tour.webp" type="image/webp">
-            <img src="assets/images/vr-5g-tour.jpg" alt="5G VR Automotive Tour — Multiplayer cover" loading="lazy">
-          </picture>
+          <img
+            src="assets/images/vr-5g-tour.webp"
+            alt="5G VR Automotive Tour — Multiplayer cover"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='assets/images/vr-5g-tour.jpg';">
         </div>
         <div class="p-5">
           <h3 class="font-semibold">5G VR Automotive Tour — Multiplayer</h3>
@@ -252,13 +251,14 @@
         </div>
       </article>
 
-      <!-- Image-only card (no video) with WebP/JPG fallback -->
+      <!-- Image-only card (no video) — WebP with auto JPG fallback -->
       <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="image-frame media-hover">
-          <picture>
-            <source srcset="assets/images/game-opt-toolkit.webp" type="image/webp">
-            <img src="assets/images/game-opt-toolkit.jpg" alt="Samsung — Game Optimization Toolkit cover" loading="lazy">
-          </picture>
+          <img
+            src="assets/images/game-opt-toolkit.webp"
+            alt="Samsung — Game Optimization Toolkit cover"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='assets/images/game-opt-toolkit.jpg';">
         </div>
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
