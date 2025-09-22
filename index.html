@@ -17,7 +17,46 @@
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
 
-    /* Unified media frames (video + image) */
+    /* ---------- Elegant background (image + animated aurora) ---------- */
+    .bg-scene {
+      position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+      background: transparent;
+    }
+    /* Blurred image base layer — replace URL with your collage/screenshot */
+    .bg-scene::before {
+      content: "";
+      position: absolute; inset: -20%;
+      background: url('assets/images/bg-portfolio.jpg') center / cover no-repeat;
+      filter: blur(36px) saturate(1.05) brightness(.92);
+      transform: scale(1.08);
+      opacity: .32;
+    }
+    .dark .bg-scene::before {
+      filter: blur(40px) saturate(1.15) brightness(.6);
+      opacity: .828;
+    }
+    /* Soft animated aurora blobs */
+    .bg-scene::after {
+      content: "";
+      position: absolute; inset: -15%;
+      background:
+        radial-gradient(35% 45% at 20% 30%, rgba(59,130,246,.28), transparent 60%),
+        radial-gradient(30% 40% at 82% 18%, rgba(168,85,247,.22), transparent 60%),
+        radial-gradient(40% 55% at 60% 80%, rgba(34,197,94,.18), transparent 65%);
+      filter: blur(42px) saturate(120%);
+      animation: auroraFloat 20s ease-in-out infinite alternate;
+      opacity: .55;
+    }
+    @keyframes auroraFloat {
+      0%   { transform: translate3d(0,-1%,0) scale(1); }
+      50%  { transform: translate3d(-1%,2%,0) scale(1.02); }
+      100% { transform: translate3d(1%,-1%,0) scale(1.01); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bg-scene::after { animation: none }
+    }
+
+    /* ---------- Media cards ---------- */
     .video-frame, .image-frame {
       position: relative; width:100%; aspect-ratio:16/9;
       border-radius:1rem; overflow:hidden;
@@ -25,7 +64,7 @@
     .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
     .image-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 
-    /* Gentle hover polish (applies to media container) */
+    /* Gentle hover polish */
     .media-hover { transition: transform .5s ease, filter .5s ease }
     .media-hover:hover { transform: scale(1.01); filter: brightness(1.02) contrast(1.02) }
   </style>
@@ -36,6 +75,8 @@
   </script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Background -->
+  <div class="bg-scene" aria-hidden="true"></div>
 
   <!-- Navbar -->
   <header class="sticky top-0 z-40 glass border-b border-slate-900/10 dark:border-white/10">
@@ -56,7 +97,8 @@
 
   <!-- Hero -->
   <section id="top" class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-100 via-sky-50 to-transparent dark:from-sky-900/40 dark:via-transparent"></div>
+    <!-- keep subtle section gradient for depth -->
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-100/50 via-sky-50/20 to-transparent dark:from-sky-900/30 dark:via-transparent"></div>
     <div class="mx-auto max-w-6xl px-4 py-16 md:py-24">
       <div class="grid items-center gap-10 md:grid-cols-2">
         <div>
@@ -81,15 +123,15 @@
   <!-- Highlights -->
   <section class="mx-auto max-w-6xl px-4 -mt-6 md:-mt-10 pb-4">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <div class="rounded-2xl bg-white dark:bg-slate-900 shadow border border-slate-200 dark:border-slate-800 p-4">
+      <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
         <p class="text-sm font-semibold">XR & Games</p>
         <p class="text-xs text-slate-500">VR/AR (Meta Quest, OpenXR), Multiplayer, Physics Simulation</p>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 shadow border border-slate-200 dark:border-slate-800 p-4">
+      <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
         <p class="text-sm font-semibold">AI in Production</p>
-        <p class="text-xs text-slate-500">ONNX, NNAPI, TFLite, Sentis; ML-Agents; Generative-AI pipelines</p>
+        <p class="text-xs text-slate-500">Sentis, ONNX, TFLite, NNAPI, ML-Agents, Generative-AI pipelines</p>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 shadow border border-slate-200 dark:border-slate-800 p-4">
+      <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
         <p class="text-sm font-semibold">Mobile Optimization</p>
         <p class="text-xs text-slate-500">GLES/Vulkan, Android NDK, in-app benchmarking & telemetry</p>
       </div>
@@ -106,7 +148,7 @@
     <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-12 gap-6">
 
       <!-- Featured (YouTube) -->
-      <article class="order-first sm:order-none lg:col-span-8 lg:col-start-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+      <article class="order-first sm:order-none lg:col-span-8 lg:col-start-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="video-frame media-hover">
           <iframe
             src="https://www.youtube-nocookie.com/embed/SAqYrQm3fzI"
@@ -119,38 +161,16 @@
         <div class="p-5">
           <h3 class="font-semibold">Drone & Missile Simulator (Unity)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Custom real-time multithreaded aerodynamic solver (per-vertex forces), autonomous drones via ML-Agents, telemetry for AI research.
+            Complete Drone & Missile simulator with custom real-time multithreaded aerodynamic solver (per-vertex forces), autonomous drones via ML-Agents, telemetry for AI research.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Unity</span><span>ML-Agents</span><span>C#</span>
+            <span>Unity</span>Physics-Simulation<span>ML-Agents</span><span>C#</span>
           </div>
         </div>
       </article>
 
       <!-- YouTube card -->
-      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
-        <div class="video-frame media-hover">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/KmM3BtNyX_s"
-            title="Palimpsisto — 3D Geospatial Platform (Unity)"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; encrypted-media; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold">Palimpsisto — 3D Geospatial Platform (Unity)</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Interactive Cesium-powered viewer streaming photogrammetry as 3D Tiles with live museum metadata & AI assistant.
-          </p>
-          <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Unity</span><span>Cesium</span><span>3D Tiles</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- YouTube card -->
-      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+      <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="video-frame media-hover">
           <iframe
             src="https://www.youtube-nocookie.com/embed/v9MegKCSuzA"
@@ -163,7 +183,7 @@
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Avatar Body Capture (Unity)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Mobile-ready full-body motion prediction in VR. Integrated multiple inference back-ends, plus an in-app benchmarking harness.
+            Mobile-ready full-body motion prediction in VR with multiple inference back-ends, plus an in-app benchmarking harness.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
             <span>Unity</span><span>ONNX</span><span>Sentis</span><span>TFLite</span>
@@ -172,7 +192,29 @@
       </article>
 
       <!-- YouTube card -->
-      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+      <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+        <div class="video-frame media-hover">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/KmM3BtNyX_s"
+            title="Palimpsisto — 3D Geospatial Platform (Unity)"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <div class="p-5">
+          <h3 class="font-semibold">Palimpsisto — 3D Geospatial Platform (Unity)</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Interactive Cesium-powered viewer, streaming photogrammetry as 3D Tiles with live museum metadata & AI assistant. Developed for the archaeological site of Kythnos.
+          </p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500">
+            <span>Unity</span><span>Cesium</span><span>3D Tiles</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- YouTube card -->
+      <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="video-frame media-hover">
           <iframe
             src="https://www.youtube-nocookie.com/embed/6NSG7SIRdUY"
@@ -194,7 +236,7 @@
       </article>
 
       <!-- Image-only card (no video) -->
-      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+      <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="image-frame media-hover">
           <img src="assets/images/vr-5g-tour.webp" alt="5G VR Automotive Tour — Multiplayer cover" loading="lazy">
         </div>
@@ -204,23 +246,23 @@
             VR multiplayer app receiving live 360° video over 5G with real-time face anonymization and network telemetry.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Unity</span><span>Multiplayer</span><span>Computer Vision</span>
+            <span>Unity</span><span>Multiplayer</span><span>5G</span>
           </div>
         </div>
       </article>
 
       <!-- Image-only card (no video) -->
-      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+      <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="image-frame media-hover">
           <img src="assets/images/game-opt-toolkit.webp" alt="Samsung — Game Optimization Toolkit cover" loading="lazy">
         </div>
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Python/C++ tooling to convert/package DL models for mobile AI runtimes (NNAPI/TFLite). Graphics harness for frame-time, thermal, and battery telemetry.
+            Python/C++ tooling to convert Onnx models to ANN for mobile AI runtimes. Graphics harness for frame-time, thermal, and battery telemetry.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Python</span><span>C++</span><span>NNAPI</span><span>Android</span>
+            <span>Python</span><span>C++</span><span>ANN</span><span>Android</span>
           </div>
         </div>
       </article>
@@ -232,7 +274,7 @@
   <section id="experience" class="mx-auto max-w-6xl px-4 py-14 md:py-20 border-t border-slate-200 dark:border-slate-800">
     <h2 class="text-2xl md:text-3xl font-bold">Experience</h2>
     <div class="mt-8 space-y-6">
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-6">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
           <h3 class="font-semibold">Research Assistant — Unity Developer — CERTH (Thessaloniki)</h3>
           <p class="text-sm text-slate-500">2022–2025</p>
@@ -246,7 +288,7 @@
           <li>Contributed to EU Horizon projects (VirTourArt, ReEvaluate) in AR/VR rendering, multimodal interaction & generative AI.</li>
         </ul>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-6">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
           <h3 class="font-semibold">Software Developer — Pragma IoT Solutions (Thessaloniki)</h3>
           <p class="text-sm text-slate-500">2024–2025</p>
@@ -264,27 +306,27 @@
   <section id="skills" class="mx-auto max-w-6xl px-4 py-14 md:py-20">
     <h2 class="text-2xl md:text-3xl font-bold">Skills</h2>
     <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Core</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Unity 3D / C# (HDRP, URP, XR Interaction), Multiplayer (Netcode), Multithreaded gameplay systems</p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Unity 3D / C#, Physics, Multiplayer, Simulations, Gameplay systems</p>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">XR & Devices</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">VR/AR (Meta Quest, Valve Index, OpenXR, Meta XR SDKs)</p>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">AI/ML</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">ML-Agents, Generative-AI pipelines, ONNX, NNAPI, TensorFlow Lite, Sentis</p>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Graphics & Mobile</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">GLES, Vulkan, Android NDK; optimization & telemetry</p>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Data & Tools</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">C++, Python, Git, CI/CD; Data visualization</p>
       </div>
-      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Geospatial</h3>
         <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Cesium 3D Tiles, Photogrammetry streaming</p>
       </div>
@@ -295,15 +337,15 @@
   <section id="education" class="mx-auto max-w-6xl px-4 py-14 md:py-20 border-t border-slate-200 dark:border-slate-800">
     <h2 class="text-2xl md:text-3xl font-bold">Education</h2>
     <ul class="mt-6 space-y-4 text-sm text-slate-700 dark:text-slate-300">
-      <li class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
-        <div class="flex items-baseline justify-between"><strong>Advanced Computer & Communication Systems (MSc)</strong></div>
-        <div>Aristotle University of Thessaloniki</div>
-      </li>
-      <li class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <li class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <div class="flex items-baseline justify-between"><strong>Physics (BSc)</strong></div>
         <div>Aristotle University of Thessaloniki</div>
       </li>
-      <li class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5">
+      <li class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
+        <div class="flex items-baseline justify-between"><strong>Advanced Computer & Communication Systems (MSc)</strong></div>
+        <div>Aristotle University of Thessaloniki</div>
+      </li>
+      <li class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <div class="flex items-baseline justify-between"><strong>Data Science with Python (Certificate)</strong></div>
         <div>National & Kapodistrian University of Athens</div>
       </li>
@@ -314,7 +356,7 @@
   <section id="contact" class="mx-auto max-w-6xl px-4 py-14 md:py-20">
     <div class="rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 text-white p-8 md:p-10 shadow">
       <h2 class="text-2xl md:text-3xl font-bold">Let’s build something.</h2>
-      <p class="mt-2 text-sky-50/90 max-w-prose">I’m based in Thessaloniki, Greece, open to remote roles in game development and XR research. I move fast, iterate with pilots, and deliver production-ready code.</p>
+      <p class="mt-2 text-sky-50/90 max-w-prose">I’m open to remote roles in game development and XR research. I move fast, iterate with pilots, and deliver production-ready code.</p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="mailto:angeloskatsampekis@gmail.com" class="rounded-xl bg-white text-sky-700 px-4 py-2 font-semibold hover:opacity-90">Email</a>
         <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
