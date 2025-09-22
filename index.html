@@ -17,12 +17,11 @@
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
 
-    /* ---------- Elegant background (image + animated aurora) ---------- */
+    /* ---------- Background (image + STATIC aurora) ---------- */
     .bg-scene {
       position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
       background: transparent;
     }
-    /* Blurred image base layer — replace URL with your collage/screenshot */
     .bg-scene::before {
       content: "";
       position: absolute; inset: -20%;
@@ -33,9 +32,9 @@
     }
     .dark .bg-scene::before {
       filter: blur(40px) saturate(1.15) brightness(.6);
-      opacity: .828;
+      opacity: .928; /* fixed odd value */
     }
-    /* Soft animated aurora blobs */
+    /* Static aurora blobs (no animation) */
     .bg-scene::after {
       content: "";
       position: absolute; inset: -15%;
@@ -44,16 +43,7 @@
         radial-gradient(30% 40% at 82% 18%, rgba(168,85,247,.22), transparent 60%),
         radial-gradient(40% 55% at 60% 80%, rgba(34,197,94,.18), transparent 65%);
       filter: blur(42px) saturate(120%);
-      animation: auroraFloat 20s ease-in-out infinite alternate;
-      opacity: .55;
-    }
-    @keyframes auroraFloat {
-      0%   { transform: translate3d(0,-1%,0) scale(1); }
-      50%  { transform: translate3d(-1%,2%,0) scale(1.02); }
-      100% { transform: translate3d(1%,-1%,0) scale(1.01); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .bg-scene::after { animation: none }
+      opacity: .5;
     }
 
     /* ---------- Media cards ---------- */
@@ -95,26 +85,19 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Intro (no hero image) -->
   <section id="top" class="relative overflow-hidden">
-    <!-- keep subtle section gradient for depth -->
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-100/50 via-sky-50/20 to-transparent dark:from-sky-900/30 dark:via-transparent"></div>
-    <div class="mx-auto max-w-6xl px-4 py-16 md:py-24">
-      <div class="grid items-center gap-10 md:grid-cols-2">
-        <div>
-          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">Angelos-Ioannis Katsampekis</h1>
-          <p class="mt-3 text-lg md:text-xl text-slate-600 dark:text-slate-300">Unity Game Developer & XR Research Engineer</p>
-          <p class="mt-4 text-slate-700 dark:text-slate-300 max-w-prose">I build high-performance VR/AR experiences, multiplayer systems, and physics-driven simulations. My work spans Samsung & Coca-Cola funded R&D, mobile AI deployment, and generative-AI powered gameplay.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#projects" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-semibold hover:bg-white/70 dark:hover:bg-slate-900/30">View projects</a>
-            <a href="assets/Angelos-Ioannis-Katsampekis-CV.pdf" class="rounded-xl px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90" download>Download CV</a>
-          </div>
-        </div>
-        <div class="relative">
-          <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow">
-            <img src="https://images.unsplash.com/photo-1607853554439-0069ec0f29f3?q=80&w=1600&auto=format&fit=crop" alt="Unity & XR montage" class="h-full w-full object-cover" loading="lazy"/>
-          </div>
-          <p class="mt-2 text-xs text-slate-500">(Replace hero image with a collage or screenshot from your projects.)</p>
+    <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">Angelos-Ioannis Katsampekis</h1>
+        <p class="mt-3 text-lg md:text-xl text-slate-600 dark:text-slate-300">Unity Game Developer & XR Research Engineer</p>
+        <p class="mt-4 text-slate-700 dark:text-slate-300">
+          I build VR/AR applications, physics-based simulations, gameplay systems, and multiplayer experiences. My work centers on game development and XR research, with additional expertise in machine learning, generative AI, mobile optimization, and collaborations with Samsung and Coca-Cola.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm font-semibold hover:bg-white/70 dark:hover:bg-slate-900/30">View projects</a>
+          <a href="assets/Angelos-Ioannis-Katsampekis-CV.pdf" class="rounded-xl px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90" download>Download CV</a>
         </div>
       </div>
     </div>
@@ -125,15 +108,15 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
       <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
         <p class="text-sm font-semibold">XR & Games</p>
-        <p class="text-xs text-slate-500">VR/AR (Meta Quest, OpenXR), Multiplayer, Physics Simulation</p>
+        <p class="text-xs text-slate-500">VR/AR (Meta Quest, OpenXR), multiplayer, physics simulation</p>
       </div>
       <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
         <p class="text-sm font-semibold">AI in Production</p>
-        <p class="text-xs text-slate-500">Sentis, ONNX, TFLite, NNAPI, ML-Agents, Generative-AI pipelines</p>
+        <p class="text-xs text-slate-500">Sentis, ONNX Runtime, TensorFlow Lite, NNAPI, ML-Agents, generative-AI pipelines</p>
       </div>
       <div class="rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur shadow border border-slate-200 dark:border-slate-800 p-4">
         <p class="text-sm font-semibold">Mobile Optimization</p>
-        <p class="text-xs text-slate-500">GLES/Vulkan, Android NDK, in-app benchmarking & telemetry</p>
+        <p class="text-xs text-slate-500">GLES/Vulkan, Android NDK, in-app benchmarking and telemetry</p>
       </div>
     </div>
   </section>
@@ -161,10 +144,10 @@
         <div class="p-5">
           <h3 class="font-semibold">Drone & Missile Simulator (Unity)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Complete Drone & Missile simulator with custom real-time multithreaded aerodynamic solver (per-vertex forces), autonomous drones via ML-Agents, telemetry for AI research.
+            Complete simulator with a custom multithreaded aerodynamic solver (per-vertex forces), autonomous drones trained with ML-Agents, and research-grade telemetry.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Unity</span>Physics-Simulation<span>ML-Agents</span><span>C#</span>
+            <span>Unity</span><span>Physics Simulation</span><span>ML-Agents</span><span>C#</span>
           </div>
         </div>
       </article>
@@ -183,10 +166,10 @@
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Avatar Body Capture (Unity)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Mobile-ready full-body motion prediction in VR with multiple inference back-ends, plus an in-app benchmarking harness.
+            Mobile-ready full-body motion prediction in VR with multiple inference back ends and an in-app benchmarking harness.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Unity</span><span>ONNX</span><span>Sentis</span><span>TFLite</span>
+            <span>Unity</span><span>ONNX Runtime</span><span>Sentis</span><span>TensorFlow Lite</span>
           </div>
         </div>
       </article>
@@ -205,7 +188,7 @@
         <div class="p-5">
           <h3 class="font-semibold">Palimpsisto — 3D Geospatial Platform (Unity)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Interactive Cesium-powered viewer, streaming photogrammetry as 3D Tiles with live museum metadata & AI assistant. Developed for the archaeological site of Kythnos.
+            Interactive Cesium-powered viewer streaming photogrammetry as 3D Tiles with live museum metadata and an AI assistant, developed for the archaeological site of Kythnos.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
             <span>Unity</span><span>Cesium</span><span>3D Tiles</span>
@@ -227,10 +210,10 @@
         <div class="p-5">
           <h3 class="font-semibold">ReEvaluate — AI-Driven VR Museum (EU Horizon)</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Generative-AI creates themed textures and auto-places artifacts based on semantic descriptions in an immersive museum.
+            Generative AI creates themed textures and auto-places artifacts based on semantic descriptions inside an immersive museum.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Unity</span><span>Generative-AI</span><span>XR</span>
+            <span>Unity</span><span>Generative AI</span><span>XR</span>
           </div>
         </div>
       </article>
@@ -243,7 +226,7 @@
         <div class="p-5">
           <h3 class="font-semibold">5G VR Automotive Tour — Multiplayer</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            VR multiplayer app receiving live 360° video over 5G with real-time face anonymization and network telemetry.
+            VR multiplayer application receiving live 360° video over 5G with real-time face anonymization and detailed network telemetry.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
             <span>Unity</span><span>Multiplayer</span><span>5G</span>
@@ -259,10 +242,10 @@
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
           <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Python/C++ tooling to convert Onnx models to ANN for mobile AI runtimes. Graphics harness for frame-time, thermal, and battery telemetry.
+            Python/C++ tooling to convert ONNX models to ANN for mobile AI runtimes plus a graphics harness for frame-time, thermal, and battery telemetry.
           </p>
           <div class="mt-3 flex gap-2 text-xs text-slate-500">
-            <span>Python</span><span>C++</span><span>ANN</span><span>Android</span>
+            <span>Python</span><span>C++</span><span>NNAPI</span><span>Android</span>
           </div>
         </div>
       </article>
@@ -280,12 +263,12 @@
           <p class="text-sm text-slate-500">2022–2025</p>
         </div>
         <ul class="mt-3 list-disc pl-5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-          <li>Developed a full Drone & Missile simulator; engineered a multithreaded aerodynamic solver; trained autonomous drones with ML-Agents; captured telemetry.</li>
-          <li>Delivered Samsung & Coca-Cola funded R&D across VR, AI, and optimization.</li>
-          <li>Built a mobile-ready VR full-body tracking pipeline; integrated ONNXRuntime, Sentis, TFLite; added an in-app benchmarking framework.</li>
-          <li>Shipped the Palimpsisto 3D geospatial platform (Cesium 3D Tiles) with AI assistant & live museum metadata.</li>
-          <li>Developed a VR multiplayer app receiving 360° video over 5G with face anonymization & network telemetry.</li>
-          <li>Contributed to EU Horizon projects (VirTourArt, ReEvaluate) in AR/VR rendering, multimodal interaction & generative AI.</li>
+          <li>Built a full Drone & Missile simulator, engineered a multithreaded aerodynamic solver, trained autonomous drones with ML-Agents, and captured telemetry.</li>
+          <li>Delivered Samsung and Coca-Cola funded R&D across VR, AI, and optimization.</li>
+          <li>Developed a mobile-ready VR full-body tracking pipeline, integrated ONNX Runtime, Sentis, and TensorFlow Lite, and added an in-app benchmarking framework.</li>
+          <li>Shipped the Palimpsisto 3D geospatial platform (Cesium 3D Tiles) with an AI assistant and live museum metadata.</li>
+          <li>Built a VR multiplayer app receiving 360° video over 5G with face anonymization and network telemetry.</li>
+          <li>Contributed to EU Horizon projects (VirTourArt, ReEvaluate) in AR/VR rendering, multimodal interaction, and generative AI.</li>
         </ul>
       </div>
       <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-6">
@@ -294,9 +277,9 @@
           <p class="text-sm text-slate-500">2024–2025</p>
         </div>
         <ul class="mt-3 list-disc pl-5 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-          <li>Created Python/C++ tools to convert ONNX models to ANN for Android deployment.</li>
-          <li>Benchmarked mobile games with a custom graphics harness (frame-time, thermal, battery) to guide optimization with Samsung’s team.</li>
-          <li>Built Python dashboarding for NB-IoT sensors (EMBNOESIS) to monitor construction sites in real-time.</li>
+          <li>Created Python/C++ tools to convert and package ONNX models to ANN for Android deployment.</li>
+          <li>Benchmarked mobile games with a custom graphics harness (frame time, thermals, battery) to guide optimization with Samsung’s team.</li>
+          <li>Built Python dashboards for NB-IoT sensors (EMBNOESIS) to monitor construction sites in real time.</li>
         </ul>
       </div>
     </div>
@@ -308,7 +291,7 @@
     <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Core</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Unity 3D / C#, Physics, Multiplayer, Simulations, Gameplay systems</p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Unity 3D / C#, physics, multiplayer, simulations, gameplay systems</p>
       </div>
       <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">XR & Devices</h3>
@@ -316,19 +299,19 @@
       </div>
       <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">AI/ML</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">ML-Agents, Generative-AI pipelines, ONNX, NNAPI, TensorFlow Lite, Sentis</p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">ML-Agents, Sentis, ONNX Runtime, TensorFlow Lite, NNAPI, generative-AI pipelines</p>
       </div>
       <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Graphics & Mobile</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">GLES, Vulkan, Android NDK; optimization & telemetry</p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">GLES, Vulkan, Android NDK, optimization and telemetry</p>
       </div>
       <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Data & Tools</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">C++, Python, Git, CI/CD; Data visualization</p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">C++, Python, Git, CI/CD, data visualization</p>
       </div>
       <div class="rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 p-5">
         <h3 class="font-semibold">Geospatial</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Cesium 3D Tiles, Photogrammetry streaming</p>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Cesium 3D Tiles, photogrammetry streaming</p>
       </div>
     </div>
   </section>
@@ -356,7 +339,7 @@
   <section id="contact" class="mx-auto max-w-6xl px-4 py-14 md:py-20">
     <div class="rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 text-white p-8 md:p-10 shadow">
       <h2 class="text-2xl md:text-3xl font-bold">Let’s build something.</h2>
-      <p class="mt-2 text-sky-50/90 max-w-prose">I’m open to remote roles in game development and XR research. I move fast, iterate with pilots, and deliver production-ready code.</p>
+      <p class="mt-2 text-sky-50/90 max-w-prose">I’m open to remote roles in game development and XR research, delivering production-ready code through research-driven innovation and real-world industry experience.</p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="mailto:angeloskatsampekis@gmail.com" class="rounded-xl bg-white text-sky-700 px-4 py-2 font-semibold hover:opacity-90">Email</a>
         <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
