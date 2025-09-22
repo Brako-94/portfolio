@@ -10,6 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Preload background (WebP first, JPG fallback lives in CSS + <noscript>) -->
+  <link rel="preload" as="image" href="assets/images/bg-portfolio.webp" imagesrcset="assets/images/bg-portfolio.webp 1x, assets/images/bg-portfolio.webp 2x" />
+  <link rel="preload" as="image" href="assets/images/bg-portfolio.jpg" />
+
   <style>
     :root { --ring: rgba(14,165,233,.35) }
     html { scroll-behavior:smooth }
@@ -17,24 +22,27 @@
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
 
-    /* ---------- Background (image + STATIC aurora) ---------- */
+    /* ---------- Background (image with WebP/JPG fallback + static aurora) ---------- */
     .bg-scene {
       position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
-      background: transparent;
     }
     .bg-scene::before {
       content: "";
       position: absolute; inset: -20%;
-      background: url('assets/images/bg-portfolio.jpg') center / cover no-repeat;
+      background:
+        /* blurred image base (image-set gives webp->jpg fallback on GH Pages) */
+        image-set(
+          url('assets/images/bg-portfolio.webp') type('image/webp'),
+          url('assets/images/bg-portfolio.jpg') type('image/jpeg')
+        ) center/cover no-repeat;
       filter: blur(36px) saturate(1.05) brightness(.92);
       transform: scale(1.08);
       opacity: .32;
     }
     .dark .bg-scene::before {
       filter: blur(40px) saturate(1.15) brightness(.6);
-      opacity: .928; /* fixed odd value */
+      opacity: .28;
     }
-    /* Static aurora blobs (no animation) */
     .bg-scene::after {
       content: "";
       position: absolute; inset: -15%;
@@ -52,12 +60,13 @@
       border-radius:1rem; overflow:hidden;
     }
     .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-    .image-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .image-frame picture, .image-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 
     /* Gentle hover polish */
     .media-hover { transition: transform .5s ease, filter .5s ease }
     .media-hover:hover { transform: scale(1.01); filter: brightness(1.02) contrast(1.02) }
   </style>
+
   <script>
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     document.documentElement.classList.toggle('dark', mq.matches);
@@ -67,6 +76,12 @@
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
   <!-- Background -->
   <div class="bg-scene" aria-hidden="true"></div>
+  <noscript>
+    <style>
+      /* JS-less fallback to JPG if needed */
+      .bg-scene::before { background: url('assets/images/bg-portfolio.jpg') center/cover no-repeat !important; }
+    </style>
+  </noscript>
 
   <!-- Navbar -->
   <header class="sticky top-0 z-40 glass border-b border-slate-900/10 dark:border-white/10">
@@ -85,7 +100,7 @@
     </div>
   </header>
 
-  <!-- Intro (no hero image) -->
+  <!-- Intro -->
   <section id="top" class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-100/50 via-sky-50/20 to-transparent dark:from-sky-900/30 dark:via-transparent"></div>
     <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
@@ -218,10 +233,13 @@
         </div>
       </article>
 
-      <!-- Image-only card (no video) -->
+      <!-- Image-only card (no video) with WebP/JPG fallback -->
       <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="image-frame media-hover">
-          <img src="assets/images/vr-5g-tour.webp" alt="5G VR Automotive Tour — Multiplayer cover" loading="lazy">
+          <picture>
+            <source srcset="assets/images/vr-5g-tour.webp" type="image/webp">
+            <img src="assets/images/vr-5g-tour.jpg" alt="5G VR Automotive Tour — Multiplayer cover" loading="lazy">
+          </picture>
         </div>
         <div class="p-5">
           <h3 class="font-semibold">5G VR Automotive Tour — Multiplayer</h3>
@@ -234,10 +252,13 @@
         </div>
       </article>
 
-      <!-- Image-only card (no video) -->
+      <!-- Image-only card (no video) with WebP/JPG fallback -->
       <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
         <div class="image-frame media-hover">
-          <img src="assets/images/game-opt-toolkit.webp" alt="Samsung — Game Optimization Toolkit cover" loading="lazy">
+          <picture>
+            <source srcset="assets/images/game-opt-toolkit.webp" type="image/webp">
+            <img src="assets/images/game-opt-toolkit.jpg" alt="Samsung — Game Optimization Toolkit cover" loading="lazy">
+          </picture>
         </div>
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
@@ -342,7 +363,7 @@
       <p class="mt-2 text-sky-50/90 max-w-prose">I’m open to remote roles in game development and XR research, delivering production-ready code through research-driven innovation and real-world industry experience.</p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="mailto:angeloskatsampekis@gmail.com" class="rounded-xl bg-white text-sky-700 px-4 py-2 font-semibold hover:opacity-90">Email</a>
-        <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-XL bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="assets/Angelos-Ioannis-Katsampekis-CV.pdf" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" download>Download CV</a>
       </div>
       <p class="mt-3 text-xs text-sky-50/80">Tel. +30 698 439 2304 • Greece (UTC+3)</p>
