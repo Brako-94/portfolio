@@ -9,9 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta property="og:title" content="Angelos-Ioannis Katsampekis — Unity Game Developer & XR Research">
-  <meta property="og:description" content="Unity Game Developer & XR Research Engineer with Samsung & Coca-Cola funded R&D." />
-  <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0ea5e9" />
   <style>
     :root { --ring: rgba(14,165,233,.35) }
@@ -19,26 +16,19 @@
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji" }
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
+
+    /* video frame ratio + rounding */
+    .video-frame { position: relative; width:100%; aspect-ratio:16/9; border-radius:1rem; overflow:hidden; }
+    .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
   </style>
   <script>
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     document.documentElement.classList.toggle('dark', mq.matches);
     mq.addEventListener('change', (e)=>document.documentElement.classList.toggle('dark', e.matches));
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Angelos-Ioannis Katsampekis",
-    "jobTitle": "Unity Game Developer & XR Research Engineer",
-    "email": "mailto:angeloskatsampekis@gmail.com",
-    "telephone": "+306984392304",
-    "url": "https://your-domain.example/",
-    "sameAs": ["https://linkedin.com/in/angelos-ioannis-katsampekis"]
-  }
-  </script>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+
   <!-- Navbar -->
   <header class="sticky top-0 z-40 glass border-b border-slate-900/10 dark:border-white/10">
     <div class="mx-auto max-w-6xl px-4">
@@ -105,95 +95,96 @@
       <a href="#contact" class="text-sm text-sky-600 dark:text-sky-400 hover:underline">Open to contracts & full-time</a>
     </div>
 
-    <!-- grid: 2 cols on sm, 12 cols on lg -->
     <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-12 gap-6">
-      <!-- Featured: Drone (centered, wider, taller cover) -->
-      <article id="proj-drone"
-               class="order-first sm:order-none lg:col-span-8 lg:col-start-3
-                      group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <div class="w-full aspect-[5/2] overflow-hidden"> <!-- taller than 16:9 -->
-          <img class="w-full h-full object-cover" src="assets/images/drone-missile-sim.webp" alt="Drone & Missile Simulator cover" loading="lazy">
+
+      <!-- Featured (wide) -->
+      <article class="order-first sm:order-none lg:col-span-8 lg:col-start-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/SAqYrQm3fzI"
+            title="Drone & Missile Simulator (Unity)"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
         <div class="p-5">
           <h3 class="font-semibold">Drone & Missile Simulator (Unity)</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Custom real-time multithreaded aerodynamic solver (per-vertex forces), autonomous drones via ML-Agents, telemetry for AI research.</p>
-          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>ML-Agents</span><span>C#</span></div>
-          <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-yt="SAqYrQm3fzI">Demo</a>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Custom real-time multithreaded aerodynamic solver (per-vertex forces), autonomous drones via ML-Agents, telemetry for AI research.
+          </p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500">
+            <span>Unity</span><span>ML-Agents</span><span>C#</span>
           </div>
         </div>
       </article>
 
-      <article class="lg:col-span-4 group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <div class="w-full aspect-[16/9] overflow-hidden">
-          <img class="w-full h-full object-cover" src="assets/images/palimpsisto.webp" alt="Palimpsisto — 3D Geospatial Platform cover" loading="lazy">
+      <!-- Standard card -->
+      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/KmM3BtNyX_s"
+            title="Palimpsisto — 3D Geospatial Platform (Unity)"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
         <div class="p-5">
           <h3 class="font-semibold">Palimpsisto — 3D Geospatial Platform (Unity)</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Interactive Cesium-powered viewer streaming photogrammetry as 3D Tiles with live museum metadata & AI assistant.</p>
-          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Cesium</span><span>3D Tiles</span></div>
-          <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-yt="KmM3BtNyX_s">Demo</a>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Interactive Cesium-powered viewer streaming photogrammetry as 3D Tiles with live museum metadata & AI assistant.
+          </p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500">
+            <span>Unity</span><span>Cesium</span><span>3D Tiles</span>
           </div>
         </div>
       </article>
 
-      <!-- Standard cards (each spans 4 of 12 cols on lg) -->
-      <article class="lg:col-span-4 group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <div class="w-full aspect-[16/9] overflow-hidden">
-          <img class="w-full h-full object-cover" src="assets/images/avatar-body-capture.webp" alt="Samsung — Avatar Body Capture cover" loading="lazy">
+      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/v9MegKCSuzA"
+            title="Samsung — Avatar Body Capture (Unity)"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
         <div class="p-5">
           <h3 class="font-semibold">Samsung — Avatar Body Capture (Unity)</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Mobile-ready full-body motion prediction in VR. Integrated multiple inference back-ends, plus an in-app benchmarking harness.</p>
-          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>ONNX</span><span>Sentis</span><span>TFLite</span></div>
-          <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-yt="v9MegKCSuzA">Demo</a>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Mobile-ready full-body motion prediction in VR. Integrated multiple inference back-ends, plus an in-app benchmarking harness.
+          </p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500">
+            <span>Unity</span><span>ONNX</span><span>Sentis</span><span>TFLite</span>
           </div>
         </div>
       </article>
 
-      <article class="lg:col-span-4 group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <div class="w-full aspect-[16/9] overflow-hidden">
-          <img class="w-full h-full object-cover" src="assets/images/vr-museum.webp" alt="AI-Driven VR Museum cover" loading="lazy">
+      <article class="lg:col-span-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/6NSG7SIRdUY"
+            title="ReEvaluate — AI-Driven VR Museum (EU Horizon)"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
         <div class="p-5">
           <h3 class="font-semibold">ReEvaluate — AI-Driven VR Museum (EU Horizon)</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Generative-AI creates themed textures and auto-places artifacts based on semantic descriptions in an immersive museum.</p>
-          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Generative-AI</span><span>XR</span></div>
-          <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-yt="6NSG7SIRdUY">Early Demo</a>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Generative-AI creates themed textures and auto-places artifacts based on semantic descriptions in an immersive museum.
+          </p>
+          <div class="mt-3 flex gap-2 text-xs text-slate-500">
+            <span>Unity</span><span>Generative-AI</span><span>XR</span>
           </div>
         </div>
       </article>
 
-      <article class="lg:col-span-4 group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <div class="w-full aspect-[16/9] overflow-hidden">
-          <img class="w-full h-full object-cover" src="assets/images/vr-5g-tour.webp" alt="5G VR Automotive Tour cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold">5G VR Automotive Tour — Multiplayer</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">VR multiplayer app receiving 360° video over 5G, with real-time face anonymization and networking telemetry.</p>
-          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Unity</span><span>Multiplayer</span><span>Computer Vision</span></div>
-          <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-video="assets/videos/vr-5g-tour.mp4">Early Demo</a>
-          </div>
-        </div>
-      </article>
+      <!-- Duplicate the pattern above for more projects... -->
 
-      <article class="lg:col-span-4 group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow hover:shadow-lg transition overflow-hidden">
-        <div class="w-full aspect-[16/9] overflow-hidden">
-          <img class="w-full h-full object-cover" src="assets/images/game-opt-toolkit.webp" alt="Samsung — Game Optimization Toolkit cover" loading="lazy">
-        </div>
-        <div class="p-5">
-          <h3 class="font-semibold">Samsung — Game Optimization Toolkit</h3>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Python/C++ tooling to convert/package DL models for mobile AI runtimes (NNAPI/TFLite). Custom graphics harness for frame-time/thermal/battery telemetry.</p>
-          <div class="mt-3 flex gap-2 text-xs text-slate-500"><span>Python</span><span>C++</span><span>NNAPI</span><span>Android</span></div>
-          <div class="mt-4 flex gap-3">
-            <a class="rounded-lg border px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" href="#" data-video="assets/videos/game-opt-toolkit.mp4">Demo</a>
-          </div>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -260,7 +251,7 @@
     </div>
   </section>
 
-  <!-- Education (dates removed) -->
+  <!-- Education -->
   <section id="education" class="mx-auto max-w-6xl px-4 py-14 md:py-20 border-t border-slate-200 dark:border-slate-800">
     <h2 class="text-2xl md:text-3xl font-bold">Education</h2>
     <ul class="mt-6 space-y-4 text-sm text-slate-700 dark:text-slate-300">
@@ -286,7 +277,6 @@
       <p class="mt-2 text-sky-50/90 max-w-prose">I’m based in Thessaloniki, Greece, open to remote roles in game development and XR research. I move fast, iterate with pilots, and deliver production-ready code.</p>
       <div class="mt-6 flex flex-wrap gap-3">
         <a href="mailto:angeloskatsampekis@gmail.com" class="rounded-xl bg-white text-sky-700 px-4 py-2 font-semibold hover:opacity-90">Email</a>
-        <button id="copyEmail" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20">Copy email</button>
         <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="assets/Angelos-Ioannis-Katsampekis-CV.pdf" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" download>Download CV</a>
       </div>
@@ -301,59 +291,8 @@
     </div>
   </footer>
 
-  <!-- Video Modal -->
-  <div id="videoModal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/70 p-4">
-    <div class="relative w-full max-w-4xl">
-      <button id="videoClose" class="absolute -top-3 -right-3 rounded-full bg-white text-slate-800 w-9 h-9 shadow hover:opacity-90" aria-label="Close">✕</button>
-      <div id="videoContainer" class="aspect-video w-full bg-black rounded-xl overflow-hidden"></div>
-      <p class="mt-2 text-xs text-slate-300 text-center">Tip: press Esc to close.</p>
-    </div>
-  </div>
-
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('copyEmail').addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('angeloskatsampekis@gmail.com');
-        const btn = document.getElementById('copyEmail');
-        const prev = btn.textContent; btn.textContent = 'Copied!';
-        setTimeout(()=>btn.textContent = prev, 1200);
-      } catch {}
-    });
-
-    (function(){
-      const modal = document.getElementById('videoModal');
-      const container = document.getElementById('videoContainer');
-      const closeBtn = document.getElementById('videoClose');
-
-      function openModal(html){
-        container.innerHTML = html;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-      function closeModal(){
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        container.innerHTML = '';
-        document.body.style.overflow = '';
-      }
-
-      document.addEventListener('click', (e) => {
-        const a = e.target.closest('a[data-video], a[data-yt]');
-        if(!a) return;
-        e.preventDefault();
-        if(a.dataset.video){
-          openModal(`<video src="${a.dataset.video}" controls autoplay playsinline class="w-full h-full"></video>`);
-        } else if (a.dataset.yt){
-          openModal(`<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`);
-        }
-      });
-
-      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
-      closeBtn.addEventListener('click', closeModal);
-      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
-    })();
   </script>
 </body>
 </html>
