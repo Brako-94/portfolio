@@ -10,74 +10,70 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="theme-color" content="#0ea5e9" />
-
   <style>
-    :root {
-      --ring: rgba(14,165,233,.35);
-      --bg-url: url('assets/Images/bg-portfolio.webp'); /* runtime-swapped below */
-    }
+    :root { --ring: rgba(14,165,233,.35) }
     html { scroll-behavior:smooth }
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji" }
     .glass { backdrop-filter: saturate(140%) blur(12px); background: rgba(255,255,255,.7) }
     .dark .glass { background: rgba(2,6,23,.6) }
 
-    /* ---------- Background (static) ---------- */
-    .bg-scene {
-      position: fixed; inset: 0; z-index: 0;  /* <- key change */
-      overflow: hidden; pointer-events: none;
-      background: transparent;
+    /* ---------- Background (picture-based, no JS) ---------- */
+    .bg-scene{
+      position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
     }
-    .bg-scene::before{
-      content:""; position:absolute; inset:-20%;
-      background: var(--bg-url) center/cover no-repeat;
+    .bg-scene picture, .bg-scene img{
+      position:absolute; inset:-20%;
+      width:140%; height:140%;
+      object-fit:cover; object-position:center;
       filter: blur(36px) saturate(1.05) brightness(.92);
-      transform: scale(1.08); opacity:.32;
+      transform:scale(1.08);
+      opacity:.532;
     }
-    .dark .bg-scene::before{ filter: blur(40px) saturate(1.15) brightness(.6); opacity:.928 }
+    .dark .bg-scene img{
+      /* your requested high opacity in dark mode */
+      filter: blur(40px) saturate(1.15) brightness(.86);
+      opacity:.7928;
+    }
+    /* static aurora blobs on top of the blurred image */
     .bg-scene::after{
       content:""; position:absolute; inset:-15%;
       background:
         radial-gradient(35% 45% at 20% 30%, rgba(59,130,246,.28), transparent 60%),
         radial-gradient(30% 40% at 82% 18%, rgba(168,85,247,.22), transparent 60%),
         radial-gradient(40% 55% at 60% 80%, rgba(34,197,94,.18), transparent 65%);
-      filter: blur(42px) saturate(120%); opacity:.5;
+      filter: blur(42px) saturate(120%);
+      opacity:.5;
     }
 
-    /* Page content wrapper sits above background */
-    #app { position: relative; z-index: 1; }
+    /* Page content wrapper above background */
+    #app{ position:relative; z-index:1 }
 
     /* ---------- Media cards ---------- */
-    .video-frame, .image-frame { position:relative; width:100%; aspect-ratio:16/9; border-radius:1rem; overflow:hidden }
-    .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0 }
-    .image-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+    .video-frame, .image-frame{ position:relative; width:100%; aspect-ratio:16/9; border-radius:1rem; overflow:hidden }
+    .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+    .image-frame img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
-    .media-hover { transition: transform .5s ease, filter .5s ease }
-    .media-hover:hover { transform: scale(1.01); filter: brightness(1.02) contrast(1.02) }
+    .media-hover{ transition: transform .5s ease, filter .5s ease }
+    .media-hover:hover{ transform: scale(1.01); filter: brightness(1.02) contrast(1.02) }
   </style>
-
   <script>
-    // Dark mode
+    // Dark mode toggle based on system preference
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     document.documentElement.classList.toggle('dark', mq.matches);
     mq.addEventListener('change', (e)=>document.documentElement.classList.toggle('dark', e.matches));
-
-    // Background WebP -> JPG fallback (case-sensitive paths on GitHub)
-    (function () {
-      const webp = 'assets/Images/bg-portfolio.webp';
-      const jpg  = 'assets/Images/bg-portfolio.jpg';
-      const probe = new Image();
-      probe.onload  = () => document.documentElement.style.setProperty('--bg-url', `url('${webp}')`);
-      probe.onerror = () => document.documentElement.style.setProperty('--bg-url', `url('${jpg}')`);
-      probe.src = webp + '?v=' + Date.now(); // cache-bust to avoid cached 404
-    })();
   </script>
 </head>
-
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-  <!-- Background layer (now above body background) -->
-  <div class="bg-scene" aria-hidden="true"></div>
 
-  <!-- All page content wrapped so it sits above the background -->
+  <!-- Background: picture with webp + jpg fallback -->
+  <div class="bg-scene" aria-hidden="true">
+    <picture>
+      <!-- keep exact casing to match your repo: assets/Images/... -->
+      <source srcset="assets/Images/bg-portfolio.webp" type="image/webp">
+      <img src="assets/Images/bg-portfolio.jpg" alt="" loading="eager" />
+    </picture>
+  </div>
+
   <div id="app">
     <!-- Navbar -->
     <header class="sticky top-0 z-40 glass border-b border-slate-900/10 dark:border-white/10">
@@ -96,7 +92,7 @@
       </div>
     </header>
 
-    <!-- Intro -->
+    <!-- Intro (no hero image) -->
     <section id="top" class="relative overflow-hidden">
       <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-100/50 via-sky-50/20 to-transparent dark:from-sky-900/30 dark:via-transparent"></div>
       <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
@@ -144,7 +140,13 @@
         <!-- Featured (YouTube) -->
         <article class="order-first sm:order-none lg:col-span-8 lg:col-start-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
           <div class="video-frame media-hover">
-            <iframe src="https://www.youtube-nocookie.com/embed/SAqYrQm3fzI" title="Drone & Missile Simulator (Unity)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/SAqYrQm3fzI"
+              title="Drone & Missile Simulator (Unity)"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen></iframe>
           </div>
           <div class="p-5">
             <h3 class="font-semibold">Drone & Missile Simulator (Unity)</h3>
@@ -160,7 +162,13 @@
         <!-- YouTube card -->
         <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
           <div class="video-frame media-hover">
-            <iframe src="https://www.youtube-nocookie.com/embed/v9MegKCSuzA" title="Samsung — Avatar Body Capture (Unity)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/v9MegKCSuzA"
+              title="Samsung — Avatar Body Capture (Unity)"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen></iframe>
           </div>
           <div class="p-5">
             <h3 class="font-semibold">Samsung — Avatar Body Capture (Unity)</h3>
@@ -176,7 +184,13 @@
         <!-- YouTube card -->
         <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
           <div class="video-frame media-hover">
-            <iframe src="https://www.youtube-nocookie.com/embed/KmM3BtNyX_s" title="Palimpsisto — 3D Geospatial Platform (Unity)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/KmM3BtNyX_s"
+              title="Palimpsisto — 3D Geospatial Platform (Unity)"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen></iframe>
           </div>
           <div class="p-5">
             <h3 class="font-semibold">Palimpsisto — 3D Geospatial Platform (Unity)</h3>
@@ -192,7 +206,13 @@
         <!-- YouTube card -->
         <article class="lg:col-span-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur border border-slate-200 dark:border-slate-800 shadow overflow-hidden">
           <div class="video-frame media-hover">
-            <iframe src="https://www.youtube-nocookie.com/embed/6NSG7SIRdUY" title="ReEvaluate — AI-Driven VR Museum (EU Horizon)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/6NSG7SIRdUY"
+              title="ReEvaluate — AI-Driven VR Museum (EU Horizon)"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; encrypted-media; picture-in-picture; web-share"
+              allowfullscreen></iframe>
           </div>
           <div class="p-5">
             <h3 class="font-semibold">ReEvaluate — AI-Driven VR Museum (EU Horizon)</h3>
@@ -217,7 +237,7 @@
               VR multiplayer application receiving live 360° video over 5G with real-time face anonymization and detailed network telemetry.
             </p>
             <div class="mt-3 flex gap-2 text-xs text-slate-500">
-              <span>Unity</span><span>Multiplayer</span><span>5G</span>
+              <span>Unity</span>XR<span>Multiplayer</span><span>5G</span>
             </div>
           </div>
         </article>
@@ -328,10 +348,10 @@
     <section id="contact" class="mx-auto max-w-6xl px-4 py-14 md:py-20">
       <div class="rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 text-white p-8 md:p-10 shadow">
         <h2 class="text-2xl md:text-3xl font-bold">Let’s build something.</h2>
-        <p class="mt-2 text-sky-50/90 max-w-prose">I’m open to remote roles in game development and XR research, delivering production-ready code through research-driven innovation and real-world industry experience.</p>
+        <p class="mt-2 text-sky-50/90 max-w-prose">I’m open to remote roles in game development and XR research, delivering production-ready code with real-world industry experience.</p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="mailto:angeloskatsampekis@gmail.com" class="rounded-xl bg-white text-sky-700 px-4 py-2 font-semibold hover:opacity-90">Email</a>
-          <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://linkedin.com/in/angelos-ioannis-katsampekis" class="rounded-XL bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="assets/Angelos-Ioannis-Katsampekis-CV.pdf" class="rounded-xl bg-white/10 px-4 py-2 font-semibold backdrop-blur hover:bg-white/20" download>Download CV</a>
         </div>
         <p class="mt-3 text-xs text-sky-50/80">Tel. +30 698 439 2304 • Greece (UTC+3)</p>
@@ -344,8 +364,8 @@
         <a href="#top" class="hover:underline">Back to top ↑</a>
       </div>
     </footer>
-  </div><!-- /#app -->
+  </div>
 
-  <script> document.getElementById('year').textContent = new Date().getFullYear(); </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
